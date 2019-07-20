@@ -25,7 +25,7 @@ try:
             bl_lines = bl_file.readlines()
             for y, line in enumerate(bl_lines):
                 for x, char in enumerate(line):
-                    if char != '\n':
+                    if char != '.' and char != '\n':
                         x_column.append(x)
                         y_column.append(y)
                         block_column.append(char)
@@ -38,9 +38,15 @@ try:
                     if num != 0:
                         id_column.append(num)
 
-            for i, id in enumerate(id_column):
+            # 机の個数をベースで。
+            print("len(id_column   ):{}".format(len(id_column)))
+            print("len(x_column    ):{}".format(len(x_column)))
+            print("len(y_column    ):{}".format(len(y_column)))
+            print("len(block_column):{}".format(len(block_column)))
+            for i, char in enumerate(block_column):
+                # print("i:{}".format(i))
                 out_file.write("{},{},{},{}\n".format(
-                    id, x_column[i], y_column[i], block_column[i]))
+                    id_column[i], x_column[i], y_column[i], char))
 
         except Exception as e:
             print(e)
