@@ -15,7 +15,8 @@ try:
         try:
             out_file = open(output_file_name, 'w', encoding='utf-8')
 
-            out_file.write("ID, X,Y,CHAR\n")
+            # Column name, No space.
+            out_file.write("ID,X,Y,CHAR\n")
             id_column = []
             x_column = []
             y_column = []
