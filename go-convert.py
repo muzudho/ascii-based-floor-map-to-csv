@@ -4,7 +4,7 @@
 # Root directory: Visual studio code workspace root.
 #
 input_file_name = "./ascii-floor-map-to-csv/data/floor-map.txt"
-output_file_name = "./ascii-floor-map-to-csv/data/floor-map.csv"
+output_file_name = "./ascii-floor-map-to-csv/auto-generated/floor-map.csv"
 
 try:
     in_file = open(input_file_name)
