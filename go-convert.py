@@ -3,7 +3,7 @@
 #
 # Root directory: Visual studio code workspace root.
 #
-input_file_name = "./ascii-floor-map-to-csv/data/floor-map.txt"
+input_file_name = "./ascii-floor-map-to-csv/data/block-map.txt"
 output_file_name = "./ascii-floor-map-to-csv/auto-generated/floor-map.csv"
 
 try:
@@ -12,13 +12,13 @@ try:
     try:
         out_file = open(output_file_name, 'w', encoding='utf-8')
 
-        out_file.write("X,Y,CHAR\n")
+        out_file.write("X,Y,BLOCK\n")
 
         lines = in_file.readlines()
         for y, line in enumerate(lines):
-            for x, char in enumerate(line):
-                if char != '\n':
-                    out_file.write("{},{},{}\n".format(x, y, char))
+            for x, block in enumerate(line):
+                if block != '\n':
+                    out_file.write("{},{},{}\n".format(x, y, block))
     except Exception as e:
         print(e)
     finally:

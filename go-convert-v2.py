@@ -3,7 +3,7 @@
 #
 # Root directory: Visual studio code workspace root.
 #
-block_input_file = "./ascii-floor-map-to-csv/data/floor-map.txt"
+block_input_file = "./ascii-floor-map-to-csv/data/block-map.txt"
 table_input_file = "./ascii-floor-map-to-csv/data/table-number-map.txt"
 output_file_name = "./ascii-floor-map-to-csv/auto-generated/floor-map.csv"
 
@@ -16,7 +16,7 @@ try:
             out_file = open(output_file_name, 'w', encoding='utf-8')
 
             # Column name, No space.
-            out_file.write("ID,X,Y,CHAR\n")
+            out_file.write("ID,X,Y,BLOCK\n")
             id_column = []
             x_column = []
             y_column = []
@@ -24,11 +24,11 @@ try:
 
             bl_lines = bl_file.readlines()
             for y, line in enumerate(bl_lines):
-                for x, char in enumerate(line):
-                    if char != '.' and char != '\n':
+                for x, block in enumerate(line):
+                    if block != '.' and block != '\n':
                         x_column.append(x)
                         y_column.append(y)
-                        block_column.append(char)
+                        block_column.append(block)
 
             ta_lines = ta_file.readlines()
             for row in ta_lines:
@@ -43,10 +43,10 @@ try:
             print("len(x_column    ):{}".format(len(x_column)))
             print("len(y_column    ):{}".format(len(y_column)))
             print("len(block_column):{}".format(len(block_column)))
-            for i, char in enumerate(block_column):
+            for i, block in enumerate(block_column):
                 # print("i:{}".format(i))
                 out_file.write("{},{},{},{}\n".format(
-                    id_column[i], x_column[i], y_column[i], char))
+                    id_column[i], x_column[i], y_column[i], block))
 
         except Exception as e:
             print(e)
